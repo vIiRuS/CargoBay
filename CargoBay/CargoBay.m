@@ -189,7 +189,7 @@ BOOL CBValidatePurchaseInfoMatchesReceipt(NSDictionary *purchaseInfo, NSDictiona
             [userInfo setValue:[NSString stringWithFormat:NSLocalizedStringFromTable(@"Purchase info's bundle ID (%@) does not match receipt's bundle ID (%@).", @"CargoBay", nil), [purchaseInfo objectForKey:@"bid"], [receipt objectForKey:@"bid"]] forKey:NSLocalizedFailureReasonErrorKey];
             *error = [NSError errorWithDomain:CargoBayErrorDomain code:CargoBayErrorPurchaseInfoDoesNotMatchReceipt userInfo:userInfo];
         }
-        
+
         return NO;
     } else if (![[receipt objectForKey:@"product_id"] isEqual:[purchaseInfo objectForKey:@"product-id"]]) {
         if (error != NULL) {
@@ -198,7 +198,7 @@ BOOL CBValidatePurchaseInfoMatchesReceipt(NSDictionary *purchaseInfo, NSDictiona
             [userInfo setValue:[NSString stringWithFormat:NSLocalizedStringFromTable(@"Purchase info's product ID (%@) does not match receipt's product ID (%@).", @"CargoBay", nil), [purchaseInfo objectForKey:@"product-id"], [receipt objectForKey:@"product_id"]] forKey:NSLocalizedFailureReasonErrorKey];
             *error = [NSError errorWithDomain:CargoBayErrorDomain code:CargoBayErrorPurchaseInfoDoesNotMatchReceipt userInfo:userInfo];
         }
-        
+
         return NO;
     } else if (![[receipt objectForKey:@"quantity"] isEqual:[purchaseInfo objectForKey:@"quantity"]]) {
         if (error != NULL) {
@@ -207,7 +207,7 @@ BOOL CBValidatePurchaseInfoMatchesReceipt(NSDictionary *purchaseInfo, NSDictiona
             [userInfo setValue:[NSString stringWithFormat:NSLocalizedStringFromTable(@"Purchase info's quantity (%@) does not match receipt's quantity (%@).", @"CargoBay", nil), [purchaseInfo objectForKey:@"quantity"], [receipt objectForKey:@"quantity"]] forKey:NSLocalizedFailureReasonErrorKey];
             *error = [NSError errorWithDomain:CargoBayErrorDomain code:CargoBayErrorPurchaseInfoDoesNotMatchReceipt userInfo:userInfo];
         }
-        
+
         return NO;
     } else if (![[receipt objectForKey:@"item_id"] isEqual:[purchaseInfo objectForKey:@"item-id"]]) {
         if (error != NULL) {
@@ -216,7 +216,7 @@ BOOL CBValidatePurchaseInfoMatchesReceipt(NSDictionary *purchaseInfo, NSDictiona
             [userInfo setValue:[NSString stringWithFormat:NSLocalizedStringFromTable(@"Purchase info's item ID (%@) does not match receipt's item ID (%@).", @"CargoBay", nil), [purchaseInfo objectForKey:@"item-id"], [receipt objectForKey:@"item_id"]] forKey:NSLocalizedFailureReasonErrorKey];
             *error = [NSError errorWithDomain:CargoBayErrorDomain code:CargoBayErrorPurchaseInfoDoesNotMatchReceipt userInfo:userInfo];
         }
-        
+
         return NO;
     }
 
@@ -239,7 +239,7 @@ BOOL CBValidatePurchaseInfoMatchesReceiptForDevice(NSDictionary *purchaseInfo, N
                     [userInfo setValue:[NSString stringWithFormat:NSLocalizedStringFromTable(@"Device's identifier for vendor (%@) does not match purchase info's (%@) and receipt's unique vendor identifier (%@).", @"CargoBay", nil), deviceIdentifier, transactionUniqueVendorIdentifier, receiptVendorIdentifier] forKey:NSLocalizedFailureReasonErrorKey];
                     *error = [NSError errorWithDomain:CargoBayErrorDomain code:CargoBayErrorPurchaseInfoDoesNotMatchReceipt userInfo:userInfo];
                 }
-                
+
                 return NO;
 #endif
             }
@@ -258,7 +258,7 @@ BOOL CBValidateTransactionMatchesPurchaseInfo(SKPaymentTransaction *transaction,
             [userInfo setValue:NSLocalizedStringFromTable(@"Either transaction or purchase info is invalid.", @"CargoBay", nil) forKey:NSLocalizedFailureReasonErrorKey];
             *error = [NSError errorWithDomain:CargoBayErrorDomain code:CargoBayErrorTransactionDoesNotMatchesPurchaseInfo userInfo:userInfo];
         }
-        
+
         return NO;
     }
 
@@ -271,7 +271,7 @@ BOOL CBValidateTransactionMatchesPurchaseInfo(SKPaymentTransaction *transaction,
             [userInfo setValue:[NSString stringWithFormat:NSLocalizedStringFromTable(@"Transaction's product ID (%@) does not match purchase info's product ID (%@).", @"CargoBay", nil), transactionProductIdentifier, purchaseInfoDictionaryProductIdentifier] forKey:NSLocalizedFailureReasonErrorKey];
             *error = [NSError errorWithDomain:CargoBayErrorDomain code:CargoBayErrorTransactionDoesNotMatchesPurchaseInfo userInfo:userInfo];
         }
-        
+
         return NO;
     }
 
@@ -284,7 +284,7 @@ BOOL CBValidateTransactionMatchesPurchaseInfo(SKPaymentTransaction *transaction,
             [userInfo setValue:[NSString stringWithFormat:NSLocalizedStringFromTable(@"Transaction's quantity (%d) does not match purchase info's quantity (%d).", @"CargoBay", nil), transactionQuantity, purchaseInfoDictionaryQuantity] forKey:NSLocalizedFailureReasonErrorKey];
             *error = [NSError errorWithDomain:CargoBayErrorDomain code:CargoBayErrorTransactionDoesNotMatchesPurchaseInfo userInfo:userInfo];
         }
-        
+
         return NO;
     }
 
@@ -297,7 +297,7 @@ BOOL CBValidateTransactionMatchesPurchaseInfo(SKPaymentTransaction *transaction,
             [userInfo setValue:[NSString stringWithFormat:NSLocalizedStringFromTable(@"Transaction's transaction ID (%@) does not match purchase info's transaction ID (%@).", @"CargoBay", nil), transactionTransactionIdentifier, purchaseInfoDictionaryTransactionIdentifier] forKey:NSLocalizedFailureReasonErrorKey];
             *error = [NSError errorWithDomain:CargoBayErrorDomain code:CargoBayErrorTransactionDoesNotMatchesPurchaseInfo userInfo:userInfo];
         }
-        
+
         return NO;
     }
 
@@ -326,7 +326,7 @@ BOOL CBValidateTransactionMatchesPurchaseInfo(SKPaymentTransaction *transaction,
             [userInfo setValue:[NSString stringWithFormat:NSLocalizedStringFromTable(@"Purchase info's bundle version (%@) does not match the app bundle version (%@).", @"CargoBay", nil), purchaseInfoDictionaryBundleVersion, appBundleVersion] forKey:NSLocalizedFailureReasonErrorKey];
             *error = [NSError errorWithDomain:CargoBayErrorDomain code:CargoBayErrorTransactionDoesNotMatchesPurchaseInfo userInfo:userInfo];
         }
-        
+
         return NO;
     }
 #endif
@@ -334,8 +334,8 @@ BOOL CBValidateTransactionMatchesPurchaseInfo(SKPaymentTransaction *transaction,
 
     // Optionally check the requestData.
     /*
-        `transaction.payment.requestData` is reserved for future use as stated in the document (iOS 6). 
-        It is mentioned that the default value will be `nil`. 
+        `transaction.payment.requestData` is reserved for future use as stated in the document (iOS 6).
+        It is mentioned that the default value will be `nil`.
         If the value is not `nil`, it will be rejected by the Apple App Store.
       */
 
@@ -350,7 +350,7 @@ BOOL CBValidateTransactionMatchesPurchaseInfo(SKPaymentTransaction *transaction,
             [userInfo setValue:[NSString stringWithFormat:NSLocalizedStringFromTable(@"Transaction's transaction date (%@) does not match purchase info's purchase date (%@).", @"CargoBay", nil), transactionDate, purchaseInfoDictionaryPurchaseDate] forKey:NSLocalizedFailureReasonErrorKey];
             *error = [NSError errorWithDomain:CargoBayErrorDomain code:CargoBayErrorTransactionDoesNotMatchesPurchaseInfo userInfo:userInfo];
         }
-        
+
         return NO;
     }
 
@@ -552,20 +552,20 @@ BOOL CBCheckReceiptSecurity(NSString *purchaseInfoString, NSString *signatureStr
 
         isValid = YES;
     }
-    
+
 _out:
     if (leaf) {
         CFRelease(leaf);
     }
-    
+
     if (intermediate) {
         CFRelease(intermediate);
     }
-    
+
     if (trust) {
         CFRelease(trust);
     }
-    
+
     if (policy) {
         CFRelease(policy);
     }
@@ -589,10 +589,11 @@ NSDictionary * CBPurchaseInfoFromTransactionReceipt(NSData *transactionReceiptDa
     if (!purchaseInfoDictionary) {
         return nil;
     }
-    
-    NSString *signature = [transactionReceiptDictionary objectForKey:@"signature"];
+
+    //Remove local validation, because it uses an expired certificate. Will still validate with Sandbox/Production servers.
+    /*NSString *signature = [transactionReceiptDictionary objectForKey:@"signature"];
     NSDate *purchaseDate = CBDateFromDateString([purchaseInfoDictionary objectForKey:@"purchase-date"]);
-    
+
     if (!CBCheckReceiptSecurity(purchaseInfo, signature, purchaseDate)) {
         if (error != NULL) {
             NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
@@ -600,9 +601,9 @@ NSDictionary * CBPurchaseInfoFromTransactionReceipt(NSData *transactionReceiptDa
             [userInfo setValue:NSLocalizedStringFromTable(@"Purchase info failed to validate against its signature.", @"CargoBay", nil) forKey:NSLocalizedFailureReasonErrorKey];
             *error = [NSError errorWithDomain:CargoBayErrorDomain code:CargoBayErrorCannotExtractPurchaseInfoFromTransactionReceipt userInfo:userInfo];
         }
-        
+
         return nil;
-    }
+    }*/
 
     return purchaseInfoDictionary;
 }
@@ -650,7 +651,7 @@ NSDictionary * CBPurchaseInfoFromTransactionReceipt(NSData *transactionReceiptDa
     [HTTPClient registerHTTPOperationClass:[AFJSONRequestOperation class]];
     [HTTPClient setParameterEncoding:AFJSONParameterEncoding];
     [AFJSONRequestOperation addAcceptableContentTypes:[NSSet setWithObject:@"text/plain"]];
-    
+
     return HTTPClient;
 }
 
@@ -782,7 +783,7 @@ NSDictionary * CBPurchaseInfoFromTransactionReceipt(NSData *transactionReceiptDa
                     if (failure) {
                         failure(error);
                     }
-                    
+
                     return;
                 }
 
@@ -791,10 +792,10 @@ NSDictionary * CBPurchaseInfoFromTransactionReceipt(NSData *transactionReceiptDa
                     if (failure) {
                         failure(error);
                     }
-                    
+
                     return;
                 }
-                
+
                 // Every (re-)installation generates a new unique identifier for vendor.
                 // Every purchase and restoration receipt will be tag with this new unique identifier.
                 // However, the latest receipt info might have a unique identifier for vendor from another device, from a previous installation, etc.
@@ -804,7 +805,7 @@ NSDictionary * CBPurchaseInfoFromTransactionReceipt(NSData *transactionReceiptDa
                     if (failure) {
                         failure(error);
                     }
-                    
+
                     return;
                 }
 
@@ -817,7 +818,7 @@ NSDictionary * CBPurchaseInfoFromTransactionReceipt(NSData *transactionReceiptDa
                         if (failure) {
                             failure(error);
                         }
-                        
+
                         return;
                     }
 
@@ -855,7 +856,7 @@ NSDictionary * CBPurchaseInfoFromTransactionReceipt(NSData *transactionReceiptDa
                     NSString *exception = [responseObject valueForKey:@"exception"];
                     NSDictionary *userInfo = exception ? [NSDictionary dictionaryWithObject:exception forKey:NSLocalizedFailureReasonErrorKey] : nil;
                     NSError *error = [[NSError alloc] initWithDomain:CargoBayErrorDomain code:status userInfo:userInfo];
-                    
+
                     failure(error);
                 }
                 break;
@@ -922,7 +923,7 @@ NSDictionary * CBPurchaseInfoFromTransactionReceipt(NSData *transactionReceiptDa
             [userInfo setValue:NSLocalizedStringFromTable(@"Transaction object is not valid.", @"CargoBay", nil) forKey:NSLocalizedDescriptionKey];
             *error = [NSError errorWithDomain:CargoBayErrorDomain code:CargoBayErrorTransactionNotValid userInfo:userInfo];
         }
-        
+
         return NO;
     }
 
@@ -943,7 +944,7 @@ NSDictionary * CBPurchaseInfoFromTransactionReceipt(NSData *transactionReceiptDa
                 [userInfo setValue:[NSString stringWithFormat:NSLocalizedStringFromTable(@"Transaction ID (%@) is not unique.", @"CargoBay", nil), transactionID] forKey:NSLocalizedDescriptionKey];
                 *error = [NSError errorWithDomain:CargoBayErrorDomain code:CargoBayErrorTransactionIDNotUnique userInfo:userInfo];
             }
-            
+
             return NO;
         }
     } else {
@@ -967,7 +968,7 @@ NSDictionary * CBPurchaseInfoFromTransactionReceipt(NSData *transactionReceiptDa
             }
 
             return NO;
-        }        
+        }
     }
 
     return YES;
@@ -1063,19 +1064,19 @@ restoreCompletedTransactionsFailedWithError:(NSError *)error
         [[strongSelf class] unregisterDelegate:strongSelf];
 #endif
     };
-    
+
     self.failure = ^(NSError *error) {
         if (failure) {
             failure(error);
         }
-        
+
 #if __has_feature(objc_arc_weak)
         __strong __typeof(&*weakSelf)strongSelf = weakSelf;
         [[strongSelf class] unregisterDelegate:strongSelf];
 #endif
     };
-    
-    
+
+
     return self;
 }
 
@@ -1089,7 +1090,7 @@ didFailWithError:(NSError *)error
 #endif
     if (self.failure) {
         self.failure(error);
-    }    
+    }
 }
 
 - (void)requestDidFinish:(__unused SKRequest *)request {
